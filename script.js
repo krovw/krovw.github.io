@@ -144,6 +144,7 @@ function updateSpotifyBox(data) {
   const livePlayer = document.getElementById("spotifyLivePlayer");
   const headerText = document.getElementById("activityHeaderText");
   const spotifyOpenBtn = document.getElementById("spotifyOpenBtn");
+  const coverEq = document.getElementById("coverEq");
 
   if (!song || !artist || !cover) return;
 
@@ -151,6 +152,10 @@ function updateSpotifyBox(data) {
 
   if (isPlaying) {
     const spotify = data.spotify;
+
+    if (coverEq) {
+      coverEq.style.display = "flex";
+    }
 
     song.textContent = spotify.song || "Tocando agora";
     artist.textContent = spotify.artist || "";
@@ -200,6 +205,9 @@ function updateSpotifyBox(data) {
     }
   } else {
     hideSpotifyInlinePlayer();
+    if (coverEq) {
+      coverEq.style.display = "none";
+    }
 
     if (livePlayer) {
       livePlayer.style.display = "none";
