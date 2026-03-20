@@ -1,0 +1,20 @@
+{
+  "name": "krov",
+  "bio": "drowned in silence",
+  "avatar": "assets/avatar.png",
+
+  "music": {
+    "enabled": true,
+    "file": "assets/music.mp3"
+  },
+
+  "background": {
+    "type": "image",
+    "url": "assets/bg.gif"
+  },
+
+  "links": [
+    { "name": "Instagram", "url": "#" },
+    { "name": "Discord", "url": "#" }
+  ]
+}
