@@ -514,7 +514,7 @@ body::after {
 }
 
 .status-dnd {
-  background: #f23f43;
+  background: #FF2056;
 }
 
 .status-offline {
@@ -1388,24 +1388,24 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  height: 28px;
-  padding: 0 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(30, 215, 96, 0.45);
-  color: #1ed760;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 10px;
+  border: 1px solid lab(12.9251% 4.15897 6.54917);
+  color: lab(75.0771 -60.7313 19.4147);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  background: rgba(30, 215, 96, 0.04);
+  font-size: 12px;
+  font-weight: 500;
+  background: #1A120C;
 }
 
 .spotify-open-dot {
   width: 7px;
   height: 7px;
-  border-radius: 50%;
-  background: #1ed760;
+  border-radius: 10px;
+  background: lab(75.0771 -60.7313 19.4147);
   display: inline-block;
-  animation: spotifyDotPulse 1.6s ease-in-out infinite;
+  animation: spotifyDotPulse 2s ease-in-out infinite;
 }
 
 @keyframes spotifyDotPulse {
@@ -1415,7 +1415,7 @@ body::after {
     filter: brightness(1);
   }
   50% {
-    transform: scale(1.28);
+    transform: scale(1);
     opacity: 1;
     filter: brightness(1.3);
   }
@@ -1443,7 +1443,7 @@ body::after {
   width: 0%;
   height: 100%;
   border-radius: 999px;
-  background: #1ed760;
+  background: #01C686;
   transition: width 0.2s linear;
 }
 
@@ -1452,7 +1452,7 @@ body::after {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 10px;
   color: #a39384;
 }
 
@@ -1610,4 +1610,79 @@ body::after {
 
 .top-nav-item.active .top-nav-icon {
   color: #1f140d;
+}
+
+.activity-cover-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.activity-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.cover-eq {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 10px;
+  height: 11px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.eq-bar {
+  width: 2px;
+  border-radius: 999px;
+  background: #1ed760;
+  box-shadow: 0 0 4px rgba(30, 215, 96, 0.25);
+  transform-origin: bottom center;
+}
+
+.bar-1 {
+  height: 5px;
+  animation: coverEq1 0.95s ease-in-out infinite;
+}
+
+.bar-2 {
+  height: 9px;
+  animation: coverEq2 0.95s ease-in-out infinite;
+}
+
+.bar-3 {
+  height: 6px;
+  animation: coverEq3 0.95s ease-in-out infinite;
+}
+
+@keyframes coverEq1 {
+  0%   { height: 4px; opacity: 0.75; }
+  20%  { height: 8px; opacity: 1; }
+  45%  { height: 5px; opacity: 0.82; }
+  70%  { height: 10px; opacity: 1; }
+  100% { height: 4px; opacity: 0.75; }
+}
+
+@keyframes coverEq2 {
+  0%   { height: 9px; opacity: 1; }
+  25%  { height: 5px; opacity: 0.8; }
+  50%  { height: 11px; opacity: 1; }
+  75%  { height: 6px; opacity: 0.82; }
+  100% { height: 9px; opacity: 1; }
+}
+
+@keyframes coverEq3 {
+  0%   { height: 6px; opacity: 0.82; }
+  30%  { height: 10px; opacity: 1; }
+  55%  { height: 4px; opacity: 0.74; }
+  80%  { height: 8px; opacity: 1; }
+  100% { height: 6px; opacity: 0.82; }
 }
