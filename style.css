@@ -1391,7 +1391,7 @@ body::after {
   height: 22px;
   padding: 0 8px;
   border-radius: 10px;
-  border: 1px solid lab(12.9251% 4.15897 6.54917);
+  border: 1px solid #05AF79;
   color: lab(75.0771 -60.7313 19.4147);
   text-decoration: none;
   font-size: 12px;
