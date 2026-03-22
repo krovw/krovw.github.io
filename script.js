@@ -206,7 +206,7 @@ function updateSpotifyBox(data) {
 
   if (!song || !artist || !cover) return;
 
-  const isPlaying = data && data.listening_to_spotify && data.spotify;
+  const isPlaying = !!data?.spotify;
 
   if (isPlaying) {
     const spotify = data.spotify;
