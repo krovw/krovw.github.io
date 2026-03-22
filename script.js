@@ -23,6 +23,68 @@ if (enter && app) {
 
 const DISCORD_USER_ID = "1184191270248251512";
 
+let lanyardSocket = null;
+let lanyardHeartbeat = null;
+
+function applyPresenceData(data) {
+  if (!data) return;
+
+  updateDiscordStatus(data.discord_status);
+  updateSpotifyBox(data);
+  renderDiscordBadges();
+}
+
+function connectLanyardSocket() {
+  if (lanyardSocket && lanyardSocket.readyState === WebSocket.OPEN) return;
+
+  lanyardSocket = new WebSocket("wss://api.lanyard.rest/socket");
+
+  lanyardSocket.onmessage = (event) => {
+    const payload = JSON.parse(event.data);
+
+    // Hello
+    if (payload.op === 1) {
+      const interval = payload.d.heartbeat_interval;
+
+      if (lanyardHeartbeat) {
+        clearInterval(lanyardHeartbeat);
+      }
+
+      lanyardHeartbeat = setInterval(() => {
+        if (lanyardSocket && lanyardSocket.readyState === WebSocket.OPEN) {
+          lanyardSocket.send(JSON.stringify({ op: 3 }));
+        }
+      }, interval);
+
+      lanyardSocket.send(JSON.stringify({
+        op: 2,
+        d: {
+          subscribe_to_id: DISCORD_USER_ID
+        }
+      }));
+
+      return;
+    }
+
+    if (payload.t === "INIT_STATE" || payload.t === "PRESENCE_UPDATE") {
+      applyPresenceData(payload.d);
+    }
+  };
+
+  lanyardSocket.onclose = () => {
+    if (lanyardHeartbeat) {
+      clearInterval(lanyardHeartbeat);
+      lanyardHeartbeat = null;
+    }
+
+    setTimeout(connectLanyardSocket, 3000);
+  };
+
+  lanyardSocket.onerror = () => {
+    console.log("Lanyard socket error");
+  };
+}
+
 /* DISCORD + SPOTIFY */
 async function getDiscordPresence() {
   try {
@@ -31,11 +93,7 @@ async function getDiscordPresence() {
 
     if (!json.success) return;
 
-    const data = json.data;
-
-    updateDiscordStatus(data.discord_status);
-    updateSpotifyBox(data);
-    renderDiscordBadges();
+    applyPresenceData(json.data);
   } catch (err) {
     console.error("Erro Lanyard:", err);
   }
@@ -261,7 +319,7 @@ function updateSpotifyBox(data) {
 
 /* LOOP */
 getDiscordPresence();
-setInterval(getDiscordPresence, 15000);
+connectLanyardSocket();
 
 /* TILT 3D */
 if (card) {
