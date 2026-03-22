@@ -317,14 +317,14 @@ body::after {
   font-family: "JetBrains Mono", monospace;
   font-size: 14px;
   font-weight: 400;
-  color: #8f8377;
-  letter-spacing: 0;
-  line-height: 1.5;
+  color: lab(53.5643 4.57534 10.6701);
+  letter-spacing: normal;
+  line-height: 20px;
   font-feature-settings: normal;
   font-kerning: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  opacity: 0.95;
+  opacity: 1;
   transform: translateY(-1px);
 }
 
@@ -338,17 +338,18 @@ body::after {
   border-radius: 999px;
   border: 1px solid #1b120d;
   font-size: 14px;
-  color: #887869;
-  user-select: none;
+  font-family: Inter, "Inter Fallback";
+  color: lab(53.5643 4.57534 10.6701);
+  user-select: auto;
 }
 
 .date-icon {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   stroke-width: 2;
-  color: #8b8178;
-  flex-shrink: 0;
-  pointer-events: none;
+  color: lab(53.5643 4.57534 10.6701);
+  flex-shrink: 1;
+  pointer-events: auto;
 }
 
 /* ATIVIDADE */
@@ -377,14 +378,14 @@ body::after {
 .activity-box {
   background: #1A120C;
   border-radius: 14px;
-  padding: 14px;
+  padding: 16px;
   border: 1px solid rgba(255,255,255,0.04);
 }
 
 .activity-header {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-size: 12px;
   letter-spacing: 0.6px;
   color: lab(53.5643 4.57534 10.6701);
@@ -574,8 +575,10 @@ body::after {
 }
 
 .username {
-  margin-top: 6px;
-  margin-bottom: 2px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 24px;
+  font-family: Inter, "Inter Fallback";
 }
 
 .handle {
@@ -994,7 +997,7 @@ body::after {
 
 .links-divider {
   width: 1px;
-  height: 34px;
+  height: 32px;
   background: rgba(255,255,255,0.08);
 }
 
@@ -1002,15 +1005,15 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: #bda78f;
+  color: lab(53.5643 4.57534 10.6701);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   transition: color 0.2s ease;
 }
 
 .more-link:hover {
-  color: #ede3d5;
+  color: DFE3D6;
 }
 
 .more-arrow {
@@ -1121,14 +1124,14 @@ body::after {
 
 #rbDisplayName {
   margin-top: 18px;
-  font-size: 26px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 #rbUsername {
   margin-top: 4px;
   color: #9f8974;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 #rbCreated {
