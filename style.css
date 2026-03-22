@@ -821,11 +821,12 @@ body::after {
 
 #enter h1 {
   position: relative;
-  color: #544e48;
-  font-size: 28px;
-  letter-spacing: 2px;
-  opacity: 0.9;
-  z-index: 2;
+  color: oklab(0.919999 0.00516704 0.019339 / 0.9);
+  font-size: 24px;
+  font-family: Inter, "Inter Fallback";
+  letter-spacing: 7.2px;
+  opacity: 0.6;
+  z-index: auto;
   transition: opacity 0.25s ease;
 }
 
@@ -848,7 +849,7 @@ body::after {
   );
   filter: blur(12px);
   z-index: 1;
-  animation: pulseSoft 3s ease-in-out infinite;
+  animation: pulseSoft 2s ease-in-out infinite;
 }
 
 /* animação normal do oval */
