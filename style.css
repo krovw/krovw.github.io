@@ -385,7 +385,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1px;
   color: #7b7168;
   margin-bottom: 12px; /* espaço entre header e música */
@@ -395,8 +395,8 @@ body::after {
 }
 
 .music-icon {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   stroke-width: 2;
   color: #00c97a;
   flex-shrink: 0;
