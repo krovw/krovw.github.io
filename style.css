@@ -384,11 +384,11 @@ body::after {
 .activity-header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   font-size: 12px;
-  letter-spacing: 1px;
-  color: #7b7168;
-  margin-bottom: 12px; /* espaço entre header e música */
+  letter-spacing: 0.6px;
+  color: lab(53.5643 4.57534 10.6701);
+  margin-bottom: 0px; /* espaço entre header e música */
   user-select: none;
   -webkit-user-select: none;
   pointer-events: none;
@@ -398,8 +398,8 @@ body::after {
   width: 16px;
   height: 16px;
   stroke-width: 2;
-  color: #00c97a;
-  flex-shrink: 0;
+  color: lab(66.9756 -58.27 19.5419);
+  flex-shrink: 1;
   transform: translateY(-0.5px);
 }
 
@@ -414,26 +414,30 @@ body::after {
   height: 64px;
   border-radius: 8px;
   object-fit: cover;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 
 #songName {
-  color: #fff;
-  font-weight: 700;
+  color: lab(90.7505 1.8031 7.45089);
+  font-family: Inter, "Inter Fallback";
+  font-weight: 600;
   font-size: 14px;
-  line-height: 1.2;
+  line-height: 20px;
 }
 
 #artistName {
-  color: #b0a79f;
-  font-size: 13px;
-  margin-top: 4px;
+  color: lab(53.5643 4.57534 10.6701);
+  font-size: 14px;
+  margin-top: 0px;
+  stroke-width: 1px;
+  font-family: Inter, "Inter Fallback";
 }
 
 .desc {
   font-size: 12px;
-  color: #7f756e;
+  color: lab(53.5643 4.57534 10.6701);
   margin-top: 4px;
+  font-family: Inter, "Inter Fallback";
 }
 
 .spotify {
