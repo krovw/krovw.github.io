@@ -595,18 +595,24 @@ body::after {
 }
 
 .hero-text {
-  position: absolute;
-  top: calc(50% - 340px);
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Inter', sans-serif;
+  position: fixed !important;
+  top: 118px !important;
+  left: 50% !important;
+  right: auto !important;
+  margin: 0 !important;
+  transform: translateX(-50%) !important;
+  width: max-content !important;
+  max-width: calc(100vw - 48px) !important;
+  padding: 0px !important;
+  text-align: center !important;
+  font-family: Inter, "Inter Fallback";
   font-size: 48px;
-  font-weight: 600;
-  color: #ece4dc;
-  text-align: center;
-  letter-spacing: -0.5px;
-  white-space: nowrap;
-  z-index: 5;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: normal;
+  color: lab(90.7505 1.8031 7.45089);
+  z-index: auto;
+  pointer-events: auto;
 }
 
 /* FUNDO BASE */
@@ -1693,4 +1699,362 @@ body::after {
   55%  { height: 4px; opacity: 0.74; }
   80%  { height: 8px; opacity: 1; }
   100% { height: 6px; opacity: 0.82; }
+}
+
+.page-container {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+}
+
+
+
+.simple-page-card {
+  position: fixed !important;
+  top: 56% !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, -50%) !important;
+  width: min(760px, calc(100vw - 64px)) !important;
+  min-height: 220px !important;
+  padding: 38px 34px !important;
+  border-radius: 26px !important;
+  background: linear-gradient(180deg, rgba(18, 10, 6, 0.94) 0%, rgba(11, 6, 3, 0.96) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.045) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.015),
+    0 18px 50px rgba(0,0,0,0.42) !important;
+  backdrop-filter: blur(10px) !important;
+  color: #e8e3df !important;
+  z-index: 12 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.page-title {
+  font-family: Inter, sans-serif;
+  font-size: clamp(34px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #f1e9e2;
+  margin: 0 0 20px 0;
+  text-align: left;
+}
+
+.page-text {
+  font-family: Inter, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #bcae9f;
+  margin: 0;
+  max-width: 560px;
+  text-align: left;
+}
+
+.top-nav-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.top-nav-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 70%);
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.top-nav-item:hover::after {
+  opacity: 1;
+}
+
+
+
+.page-view.active .anim-delay-1 {
+  transition-delay: 0.10s;
+}
+
+.page-view.active .anim-delay-2 {
+  transition-delay: 0.18s;
+}
+
+.page-view.active .anim-delay-3 {
+  transition-delay: 0.26s;
+}
+
+.page-view.active .anim-delay-4 {
+  transition-delay: 0.34s;
+}
+
+
+.page-fade-overlay.active {
+  opacity: 0.92;
+}
+
+
+
+.about-layout {
+  position: fixed;
+  top: 132px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100vw - 72px));
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 38px;
+}
+
+.about-title {
+  margin: 0px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: normal;
+  color: lab(90.7505 1.8031 7.45089);
+  width: 1024px;
+}
+
+.about-underline {
+  width: 82px;
+  height: 5px;
+  border-radius: 999px;
+  margin-top: 14px;
+  background: linear-gradient(90deg, #d1a27a 0%, #c68f67 100%);
+  box-shadow: 0 0 16px rgba(198, 143, 103, 0.18);
+}
+
+.about-bio-card {
+  width: min(1040px, calc(100vw - 72px));
+  min-height: 120px;
+  padding: 28px 32px;
+  border-radius: 24px;
+  background: #120C07;
+  border: 1px solid lab(12.9251 4.15897 6.54917);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.015),
+    0 20px 60px rgba(0,0,0,0.34);
+  backdrop-filter: blur(10px);
+}
+
+.about-bio-text {
+  margin: 0 auto;
+  max-width: 900px;
+
+  font-family: Inter, "Inter Fallback";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 29.25px;
+
+  color: lab(53.5643 4.57534 10.6701);
+
+  text-align: center; /* 🔥 ISSO CENTRALIZA */
+}
+
+/* evita que o estilo antigo do card simples atrapalhe o Sobre */
+.page-view[data-page="sobre"] .simple-page-card {
+  display: none;
+}
+
+/* =========================
+   PAGE TRANSITION - VINTEUM STYLE
+========================= */
+
+.page-container {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+}
+
+.page-view {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition:
+    opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.42s step-end;
+  will-change: opacity, transform;
+}
+
+.page-view.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.58s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear;
+}
+
+.page-view.exiting {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.24s ease,
+    transform 0.24s ease,
+    visibility 0.24s step-end;
+}
+
+.page-view.entering {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* sombra/escurecida leve entre páginas */
+.page-transition-shade {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 2, 1, 0.42);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 8;
+  transition: opacity 0.22s ease;
+}
+
+.page-transition-shade.active {
+  opacity: 1;
+}
+
+/* navbar */
+.top-nav {
+  will-change: transform, opacity;
+}
+
+.top-nav.nav-pre-enter {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-26px);
+}
+
+.top-nav.nav-entered {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  --default-transition-duration: .15s;
+  transition:
+    opacity 1.18s cubic-bezier(.4, 0, .2, 1),
+    transform 1.15s cubic-bezier(.4, 0, .2, 1);
+}
+
+/* elementos internos */
+.page-view .anim-in {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.page-view.active .anim-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-view.active .anim-delay-1 {
+  transition-delay: 0.10s;
+}
+
+.profile-card.anim-in {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.982) !important;
+  transform-origin: center center;
+  transition:
+    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.page-view.active .profile-card.anim-in {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0) scale(1) !important;
+}
+
+.page-view.active .anim-delay-2 {
+  transition-delay: 0.20s;
+}
+
+.page-view.active .anim-delay-3 {
+  transition-delay: 0.30s;
+}
+
+.page-view.active .anim-delay-4 {
+  transition-delay: 0.40s;
+}
+
+/* animação do card principal (HOME) */
+
+.profile-card.anim-in {
+  opacity: 0;
+  transform: translate3d(-50%, -50%, 0) scale(0.982);
+  transform-origin: center center;
+  transition:
+    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.page-view.active .profile-card.anim-in {
+  opacity: 1;
+  transform: translate3d(-50%, -50%, 0) scale(1);
+}
+
+/* imagem abaixo do texto (estilo vinteum) */
+
+.about-image-wrapper {
+  width: 100%;
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+.about-image {
+  width: 80%;
+  height: 420px;
+  object-fit: cover;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.45),
+    0 0 0 1px rgba(255,255,255,0.04);
+
+  opacity: 0.95;
+
+
+  /* estilo visual bonito */
+  opacity: 0.9;
+  filter: brightness(0.9) contrast(1.05);
+
+  /* sombra suave */
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(255,255,255,0.04);
+
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* leve efeito ao passar o mouse */
+.about-image:hover {
+  transform: scale(1.02);
+  opacity: 1;
 }
