@@ -460,3 +460,139 @@ function createFloatingSymbols() {
 
 createFloatingSymbols();
 window.addEventListener("resize", createFloatingSymbols);
+
+/* NAV PAGES */
+const navItems = document.querySelectorAll(".top-nav-item[data-page]");
+const pageViews = document.querySelectorAll(".page-view");
+const topNav = document.querySelector(".top-nav");
+const transitionShade = document.getElementById("pageTransitionShade");
+
+let currentPage = "home";
+let isSwitchingPage = false;
+
+function setActiveNav(page) {
+  navItems.forEach((item) => {
+    item.classList.toggle("active", item.dataset.page === page);
+  });
+}
+
+function resetAnimIn(pageEl) {
+  const animated = pageEl.querySelectorAll(".anim-in");
+
+  animated.forEach((el) => {
+    el.style.transition = "none";
+    el.style.opacity = "";
+    el.style.transform = "";
+    void el.offsetWidth;
+    el.style.transition = "";
+  });
+}
+
+function animateTopNav() {
+  if (!topNav) return;
+
+  topNav.classList.remove("nav-entered");
+  topNav.classList.add("nav-pre-enter");
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      topNav.classList.remove("nav-pre-enter");
+      topNav.classList.add("nav-entered");
+    });
+  });
+}
+
+function clearInactivePages(activePage) {
+  pageViews.forEach((view) => {
+    if (view !== activePage) {
+      view.classList.remove("active", "entering", "exiting");
+      view.style.visibility = "";
+    }
+  });
+}
+
+function setActivePage(page) {
+  const nextPage = document.querySelector(`.page-view[data-page="${page}"]`);
+  const currentActive = document.querySelector(".page-view.active");
+
+  if (!nextPage || isSwitchingPage || page === currentPage) return;
+
+  isSwitchingPage = true;
+  setActiveNav(page);
+  window.location.hash = page;
+
+  if (transitionShade) {
+    transitionShade.classList.add("active");
+  }
+
+  if (currentActive) {
+    currentActive.classList.remove("active");
+    currentActive.classList.add("exiting");
+  }
+
+  nextPage.classList.add("entering");
+  nextPage.style.visibility = "visible";
+
+  setTimeout(() => {
+    pageViews.forEach((view) => {
+      if (view !== currentActive && view !== nextPage) {
+        view.classList.remove("active", "entering", "exiting");
+        view.style.visibility = "";
+      }
+    });
+
+    resetAnimIn(nextPage);
+
+    nextPage.classList.remove("entering");
+    nextPage.classList.add("active");
+
+    animateTopNav();
+    currentPage = page;
+  }, 170);
+
+  setTimeout(() => {
+    if (transitionShade) {
+      transitionShade.classList.remove("active");
+    }
+  }, 220);
+
+  setTimeout(() => {
+    clearInactivePages(nextPage);
+    isSwitchingPage = false;
+  }, 900);
+}
+
+navItems.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();
+    setActivePage(item.dataset.page);
+  });
+});
+
+const moreLink = document.querySelector(".more-link");
+if (moreLink) {
+  moreLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    setActivePage("sobre");
+  });
+}
+
+window.addEventListener("load", () => {
+  const hashPage = window.location.hash.replace("#", "").trim();
+  const validPages = ["home", "sobre", "lazer", "amigos"];
+  const initialName = validPages.includes(hashPage) ? hashPage : "home";
+  const initialPage = document.querySelector(`.page-view[data-page="${initialName}"]`);
+
+  pageViews.forEach((view) => {
+    view.classList.remove("active", "entering", "exiting");
+    view.style.visibility = "";
+  });
+
+  if (initialPage) {
+    initialPage.classList.add("active");
+    currentPage = initialName;
+    setActiveNav(initialName);
+  }
+
+  animateTopNav();
+});
