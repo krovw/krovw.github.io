@@ -332,7 +332,7 @@ if (card) {
   let isHoveringCard = false;
   let isHoveringControls = false;
 
-  const maxRotate = 13;
+  const maxRotate = 12;
   const lerp = 0.1;
 
   const controls = document.querySelectorAll(
@@ -388,7 +388,7 @@ if (card) {
 
     targetY = (px - 0.5) * (maxRotate * 2);
     targetX = (0.5 - py) * (maxRotate * 2);
-    targetScale = 1.050;
+    targetScale = 1.044;
   });
 
   card.addEventListener("mouseleave", () => {
