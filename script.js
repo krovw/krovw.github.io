@@ -329,83 +329,94 @@ if (card) {
   let targetY = 0;
   let currentScale = 1;
   let targetScale = 1;
+  let isHoveringCard = false;
+  let isHoveringControls = false;
 
-  const maxRotate = 9;
-  const lerp = 0.18;
+  const maxRotate = 13;
+  const lerp = 0.1;
 
-  const controls = document.querySelectorAll(".links-row, .social-btn, .more-link");
+  const controls = document.querySelectorAll(
+    ".links-row, .social-row, .social-btn, .more-link, .links-divider"
+  );
 
   function animateTilt() {
     currentX += (targetX - currentX) * lerp;
     currentY += (targetY - currentY) * lerp;
     currentScale += (targetScale - currentScale) * lerp;
 
-    card.style.transform = `
-      translate3d(-50%, -50%, 0)
-      perspective(1400px)
-      rotateX(${currentX}deg)
-      rotateY(${currentY}deg)
-      scale3d(${currentScale}, ${currentScale}, ${currentScale})
-    `;
+    card.style.transform =
+      `perspective(1200px) rotateX(${currentX}deg) rotateY(${currentY}deg) scale3d(${currentScale}, ${currentScale}, ${currentScale})`;
 
     requestAnimationFrame(animateTilt);
   }
 
-  function resetTilt() {
+  function resetTilt(removeAura = true) {
     targetX = 0;
     targetY = 0;
     targetScale = 1;
+
+    if (removeAura) {
+      card.classList.remove("card-hovered");
+    }
   }
 
-  animateTilt();
-
   card.addEventListener("mouseenter", () => {
-    card.classList.add("card-hovered");
+    isHoveringCard = true;
+
+    if (!isHoveringControls) {
+      card.classList.add("card-hovered");
+    }
   });
 
   card.addEventListener("mousemove", (e) => {
-    const hoveringControls = e.target.closest(".links-row, .social-btn, .more-link, .links-divider");
+    if (!isHoveringCard || isHoveringControls) return;
 
-    if (hoveringControls) {
-      resetTilt();
-      card.classList.remove("card-hovered");
+    const blocked = e.target.closest(
+      ".links-row, .social-row, .social-btn, .more-link, .links-divider"
+    );
+
+    if (blocked) {
+      resetTilt(true);
       return;
     }
 
     card.classList.add("card-hovered");
 
     const rect = card.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
 
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const percentX = (x - centerX) / centerX;
-    const percentY = (y - centerY) / centerY;
-
-    targetY = percentX * maxRotate;
-    targetX = -percentY * maxRotate;
-    targetScale = 1.012;
+    targetY = (px - 0.5) * (maxRotate * 2);
+    targetX = (0.5 - py) * (maxRotate * 2);
+    targetScale = 1.050;
   });
 
   card.addEventListener("mouseleave", () => {
-    resetTilt();
-    card.classList.remove("card-hovered");
+    isHoveringCard = false;
+    resetTilt(true);
   });
 
   controls.forEach((el) => {
     el.addEventListener("mouseenter", () => {
-      resetTilt();
-      card.classList.remove("card-hovered");
+      isHoveringControls = true;
+      resetTilt(true);
     });
 
     el.addEventListener("mousemove", () => {
-      resetTilt();
-      card.classList.remove("card-hovered");
+      isHoveringControls = true;
+      resetTilt(true);
+    });
+
+    el.addEventListener("mouseleave", () => {
+      isHoveringControls = false;
+
+      if (isHoveringCard) {
+        card.classList.add("card-hovered");
+      }
     });
   });
+
+  animateTilt();
 }
 
 /* BACKGROUND SYMBOLS */
@@ -482,7 +493,11 @@ function resetAnimIn(pageEl) {
   animated.forEach((el) => {
     el.style.transition = "none";
     el.style.opacity = "";
-    el.style.transform = "";
+
+    if (!el.classList.contains("profile-card")) {
+      el.style.transform = "";
+    }
+
     void el.offsetWidth;
     el.style.transition = "";
   });
