@@ -102,17 +102,17 @@ body::after {
   cursor: pointer;
 }
 
-/* container do texto (IMPORTANTE) */
+/*  */
 #enter h1 {
   position: relative;
   color: #544e48;
   font-size: 28px;
   letter-spacing: 2px;
   opacity: 0.9;
-  z-index: 2; /* texto fica acima */
+  z-index: 2; /*  */
 }
 
-/* 🔥 OVAL VISÍVEL (agora não some nunca) */
+/*  */
 #enter h1::before {
   content: "";
   position: absolute;
@@ -130,16 +130,16 @@ body::after {
   );
   filter: blur(10px);
   transform: translate(-50%, -50%) scale(1);
-  z-index: 1; /* fica atrás do texto */
+  z-index: 1; /*  */
   animation: pulseSoft 3s ease-in-out infinite;
 }
 
-/* 🔥 OVAL PERFEITO AO REDOR DO TEXTO */
+/*  */
 #enter h1::before {
   content: "";
   position: absolute;
 
-  /* 🔥 AGORA COBRE O TEXTO TODO */
+  /*  */
   width: 420px;
   height: 160px;
 
@@ -149,7 +149,7 @@ body::after {
 
   border-radius: 50%;
 
-  /* 🔥 MAIS VISÍVEL */
+  /*  */
   background: radial-gradient(
     ellipse,
     rgba(255,255,255,0.12) 0%,
@@ -163,7 +163,7 @@ body::after {
   animation: pulseSoft 3s ease-in-out infinite;
 }
 
-/* 🔥 ANIMAÇÃO IGUAL VOCÊ DESCREVEU */
+/*  */
 @keyframes pulseSoft {
   0% {
     opacity: 0.35; /* não fica tão escuro */
@@ -214,16 +214,13 @@ body::after {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 620px;
+  width: 638px;
+  max-width: none;
 
-  border-radius: 18px;
+  border-radius: 21px;
   overflow: visible;
-
-  background: linear-gradient(180deg, #120c07);
-
-  border: 1px solid rgba(255,255,255,0.05);
+  background: #120c07;
+  border: 1px solid lab(12.9251 4.15897 6.54917);
 
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.02),
@@ -232,17 +229,13 @@ body::after {
   backdrop-filter: blur(12px);
   z-index: 20;
 
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.profile-card {
-  position: fixed;
-  top: 50%;
-  left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  overflow: visible;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform;
+  transition:
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
 .profile-card::before {
@@ -257,7 +250,7 @@ body::after {
   transition: opacity 0.25s ease;
 
   box-shadow:
-    0 0 52px rgba(36, 27, 20),  /* maior + mais claro */
+    0 0 52px rgba(36, 27, 20),  /*  */
     0 0 92px rgba(34, 30, 25),
     0 22px 70px rgba(0,0,0,0.65);
 }
@@ -369,7 +362,7 @@ body::after {
   width: 14px;
   height: 14px;
   stroke-width: 2;
-  color: #00c97a; /* 🔥 verde fiel ao estilo dele */
+  color: #00c97a; /*  */
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -485,6 +478,8 @@ body::after {
   height: 96px;
   z-index: 10;
   overflow: visible;
+
+  transform: translateZ(30px);
 }
 
 .avatar {
@@ -534,12 +529,6 @@ body::after {
   display: none;
 }
 
-.profile-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: box-shadow 0.25s ease;
-}
-
 .card-header {
   position: relative;
   overflow: hidden;
@@ -548,11 +537,11 @@ body::after {
   border-top-right-radius: 18px;
   background: linear-gradient(
     100deg,
-    #533d2f 0%,   /* 🔥 menos claro que antes */
+    #533d2f 0%,   /* */
     #553e31 25%,
     #4d362b 55%,
     #402d22 80%,
-    #301e15 100%  /* 🔥 menos escuro que antes */
+    #301e15 100%  /*  */
   );
 }
 
@@ -562,7 +551,7 @@ body::after {
   inset: 0;
   background: linear-gradient(
     120deg,
-    rgba(255,255,255,0.10) 0%,   /* antes tava muito forte */
+    rgba(255,255,255,0.10) 0%,   /*  */
     rgba(255,255,255,0.05) 25%,
     rgba(255,255,255,0.02) 50%,
     transparent 75%
@@ -573,6 +562,7 @@ body::after {
 .avatar-container {
   transform: translateZ(18px);
 }
+
 
 .username {
   margin-top: 0px;
@@ -596,10 +586,10 @@ body::after {
 
 .hero-text {
   position: fixed !important;
-  top: 118px !important;
+  top: 140px !important;
   left: 50% !important;
   right: auto !important;
-  margin: 0 !important;
+  margin-top: 0px !important;
   transform: translateX(-50%) !important;
   width: max-content !important;
   max-width: calc(100vw - 48px) !important;
@@ -758,7 +748,7 @@ body::after {
   }
 }
 
-/* glow central escuro/amarronzado igual à vibe do vídeo */
+/* glow central  */
 .symbol-bg {
   position: fixed;
   inset: 0;
@@ -848,9 +838,9 @@ body::after {
   border-radius: 50%;
   background: radial-gradient(
     ellipse,
-    rgba(255,255,255,0.12) 0%,
-    rgba(255,255,255,0.06) 35%,
-    rgba(255,255,255,0.025) 60%,
+    lab(12.9251 4.15897 6.54917) 0%,
+    lab(4.4444 2.2094 1.58309) 35%,
+    lab(1.55178 0.640653 1.00339) 60%,
     transparent 80%
   );
   filter: blur(12px);
@@ -874,7 +864,7 @@ body::after {
   }
 }
 
-/* 🔥 clique estilo vinteum */
+/*  */
 #enter.revealing h1 {
   animation: revealClickText 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -931,7 +921,7 @@ body::after {
   filter: blur(10px);
 }
 
-/* depois some de vez */
+/*  */
 #enter.hidden-enter {
   display: none !important;
 }
@@ -1506,7 +1496,7 @@ body::after {
   opacity: 0.18;
 }
 
-/* glow central escuro/amarronzado */
+/* glow central  */
 .symbol-bg::after {
   content: "";
   position: absolute;
@@ -1861,16 +1851,16 @@ body::after {
 
   color: lab(53.5643 4.57534 10.6701);
 
-  text-align: center; /* 🔥 ISSO CENTRALIZA */
+  text-align: center; /* */
 }
 
-/* evita que o estilo antigo do card simples atrapalhe o Sobre */
+/*  */
 .page-view[data-page="sobre"] .simple-page-card {
   display: none;
 }
 
 /* =========================
-   PAGE TRANSITION - VINTEUM STYLE
+   
 ========================= */
 
 .page-container {
@@ -1944,7 +1934,7 @@ body::after {
 
 .top-nav.nav-pre-enter {
   opacity: 0;
-  transform: translateX(-50%) translateY(-26px);
+  transform: translateX(-50%) translateY(-80px);
 }
 
 .top-nav.nav-entered {
@@ -1952,8 +1942,8 @@ body::after {
   transform: translateX(-50%) translateY(0);
   --default-transition-duration: .15s;
   transition:
-    opacity 1.18s cubic-bezier(.4, 0, .2, 1),
-    transform 1.15s cubic-bezier(.4, 0, .2, 1);
+    opacity 0.65s cubic-bezier(.4, 0, .2, 1),
+    transform 0.65s cubic-bezier(.4, 0, .2, 1);
 }
 
 /* elementos internos */
@@ -1975,21 +1965,6 @@ body::after {
   transition-delay: 0.10s;
 }
 
-.profile-card.anim-in {
-  opacity: 0;
-  transform: translate3d(-50%, -50%, 0) scale(0.982) !important;
-  transform-origin: center center;
-  transition:
-    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
-}
-
-.page-view.active .profile-card.anim-in {
-  opacity: 1;
-  transform: translate3d(-50%, -50%, 0) scale(1) !important;
-}
-
 .page-view.active .anim-delay-2 {
   transition-delay: 0.20s;
 }
@@ -2002,24 +1977,21 @@ body::after {
   transition-delay: 0.40s;
 }
 
-/* animação do card principal (HOME) */
+/* */
 
-.profile-card.anim-in {
-  opacity: 0;
-  transform: translate3d(-50%, -50%, 0) scale(0.982);
-  transform-origin: center center;
-  transition:
-    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: opacity, transform;
+
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50%, -50%, 0) scale(0.982);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0) scale(1);
+  }
 }
 
-.page-view.active .profile-card.anim-in {
-  opacity: 1;
-  transform: translate3d(-50%, -50%, 0) scale(1);
-}
-
-/* imagem abaixo do texto (estilo vinteum) */
+/*  */
 
 .about-image-wrapper {
   width: 100%;
@@ -2041,7 +2013,7 @@ body::after {
   opacity: 0.95;
 
 
-  /* estilo visual bonito */
+  /*  */
   opacity: 0.9;
   filter: brightness(0.9) contrast(1.05);
 
@@ -2053,8 +2025,96 @@ body::after {
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/* leve efeito ao passar o mouse */
+/*  */
 .about-image:hover {
   transform: scale(1.02);
   opacity: 1;
+}
+
+.profile-card-wrap {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 638px;
+  max-width: none;
+  transform: translate(-50%, -50%);
+  z-index: auto;
+}
+
+.profile-card {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 638px;
+  height: 230%;
+  max-width: none;
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+}
+
+.profile-card-wrap.anim-in {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.982);
+  transition:
+    opacity 0.88s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.88s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.page-view.active .profile-card-wrap.anim-in {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.links-row,
+.links-row * {
+  transform-style: flat !important;
+  perspective: none !important;
+  backface-visibility: visible !important;
+}
+
+.links-row {
+  z-index: 60 !important;
+}
+
+.social-row,
+.social-btn,
+.more-link,
+.links-divider {
+  position: relative;
+  z-index: 61;
+}
+
+.social-btn,
+.more-link {
+  transform: none !important;
+}
+
+.social-btn:hover {
+  transform: translateY(-1px) scale(1.08) !important;
+}
+
+.more-link:hover {
+  transform: none !important;
+}
+
+/*  */
+
+.links-row {
+  transform: translateX(-50%) translateZ(0) !important;
+  transform-style: flat !important;
+  perspective: none !important;
+  will-change: auto !important;
+  z-index: 100 !important;
+}
+
+.links-row * {
+  transform-style: flat !important;
+  perspective: none !important;
+  backface-visibility: visible !important;
+}
+
+/*  */
+.social-btn,
+.more-link,
+.links-divider {
+  transform: none !important;
 }
