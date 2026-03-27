@@ -215,14 +215,28 @@
 </section>
 
   <!-- LAZER -->
-  <section class="page-view" data-page="lazer">
-    <div class="simple-page-card">
-      <h1 class="page-title">Lazer</h1>
-      <p class="page-text">
-        O que eu ando curtindo
-      </p>
+<section class="page-view" data-page="lazer">
+  <div class="lazer-layout">
+    <div class="lazer-header anim-in anim-delay-1">
+      <h1 class="lazer-title">Lazer</h1>
+      <p class="lazer-subtitle">O que eu ando curtindo</p>
     </div>
-  </section>
+
+    <div class="music-shell anim-in anim-delay-2">
+      <div class="music-topbar">
+        <button class="music-tab active" type="button">Música</button>
+        <button class="music-tab" type="button" disabled>Filmes &amp; Séries</button>
+      </div>
+
+      <div id="musicSection" class="music-section">
+        <div class="music-loading">
+          <div class="music-loading-dot"></div>
+          <p>Carregando dados do Last.fm...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- AMIGOS -->
   <section class="page-view" data-page="amigos">
