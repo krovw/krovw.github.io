@@ -6,8 +6,9 @@
 }
 
 body {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   background: #080503;
   position: relative;
 }
@@ -102,17 +103,17 @@ body::after {
   cursor: pointer;
 }
 
-/*  */
+/* container do texto (IMPORTANTE) */
 #enter h1 {
   position: relative;
   color: #544e48;
   font-size: 28px;
   letter-spacing: 2px;
   opacity: 0.9;
-  z-index: 2; /*  */
+  z-index: 2; /* texto fica acima */
 }
 
-/*  */
+/* 🔥 OVAL VISÍVEL (agora não some nunca) */
 #enter h1::before {
   content: "";
   position: absolute;
@@ -130,16 +131,16 @@ body::after {
   );
   filter: blur(10px);
   transform: translate(-50%, -50%) scale(1);
-  z-index: 1; /*  */
+  z-index: 1; /* fica atrás do texto */
   animation: pulseSoft 3s ease-in-out infinite;
 }
 
-/*  */
+/* 🔥 OVAL PERFEITO AO REDOR DO TEXTO */
 #enter h1::before {
   content: "";
   position: absolute;
 
-  /*  */
+  /* 🔥 AGORA COBRE O TEXTO TODO */
   width: 420px;
   height: 160px;
 
@@ -149,7 +150,7 @@ body::after {
 
   border-radius: 50%;
 
-  /*  */
+  /* 🔥 MAIS VISÍVEL */
   background: radial-gradient(
     ellipse,
     rgba(255,255,255,0.12) 0%,
@@ -163,7 +164,7 @@ body::after {
   animation: pulseSoft 3s ease-in-out infinite;
 }
 
-/*  */
+/* 🔥 ANIMAÇÃO IGUAL VOCÊ DESCREVEU */
 @keyframes pulseSoft {
   0% {
     opacity: 0.35; /* não fica tão escuro */
@@ -182,10 +183,9 @@ body::after {
 }
 
 #app {
-  position: fixed;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   z-index: 2;
 }
 
@@ -250,7 +250,7 @@ body::after {
   transition: opacity 0.25s ease;
 
   box-shadow:
-    0 0 52px rgba(36, 27, 20),  /*  */
+    0 0 52px rgba(36, 27, 20),  /* maior + mais claro */
     0 0 92px rgba(34, 30, 25),
     0 22px 70px rgba(0,0,0,0.65);
 }
@@ -362,7 +362,7 @@ body::after {
   width: 14px;
   height: 14px;
   stroke-width: 2;
-  color: #00c97a; /*  */
+  color: #00c97a; /* 🔥 verde fiel ao estilo dele */
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -537,11 +537,11 @@ body::after {
   border-top-right-radius: 18px;
   background: linear-gradient(
     100deg,
-    #533d2f 0%,   /* */
+    #533d2f 0%,   /* 🔥 menos claro que antes */
     #553e31 25%,
     #4d362b 55%,
     #402d22 80%,
-    #301e15 100%  /*  */
+    #301e15 100%  /* 🔥 menos escuro que antes */
   );
 }
 
@@ -551,7 +551,7 @@ body::after {
   inset: 0;
   background: linear-gradient(
     120deg,
-    rgba(255,255,255,0.10) 0%,   /*  */
+    rgba(255,255,255,0.10) 0%,   /* antes tava muito forte */
     rgba(255,255,255,0.05) 25%,
     rgba(255,255,255,0.02) 50%,
     transparent 75%
@@ -609,8 +609,9 @@ body::after {
 body {
   background-color: #0b0604;
   position: relative;
-  overflow: hidden;
-  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  min-height: 100vh;
   background: #080503;
 }
 
@@ -748,7 +749,7 @@ body::after {
   }
 }
 
-/* glow central  */
+/* glow central */
 .symbol-bg {
   position: fixed;
   inset: 0;
@@ -830,8 +831,8 @@ body::after {
 #enter h1::before {
   content: "";
   position: absolute;
-  width: 420px;
-  height: 160px;
+  width: 520px;
+  height: 260px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
@@ -864,7 +865,7 @@ body::after {
   }
 }
 
-/*  */
+/* 🔥 clique estilo vinteum */
 #enter.revealing h1 {
   animation: revealClickText 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -921,7 +922,7 @@ body::after {
   filter: blur(10px);
 }
 
-/*  */
+/* depois some de vez */
 #enter.hidden-enter {
   display: none !important;
 }
@@ -1496,7 +1497,7 @@ body::after {
   opacity: 0.18;
 }
 
-/* glow central  */
+/* glow central escuro/amarronzado */
 .symbol-bg::after {
   content: "";
   position: absolute;
@@ -1692,8 +1693,9 @@ body::after {
 }
 
 .page-container {
-  position: fixed;
-  inset: 0;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   z-index: 5;
 }
 
@@ -1851,65 +1853,38 @@ body::after {
 
   color: lab(53.5643 4.57534 10.6701);
 
-  text-align: center; /* */
+  text-align: center; /* 🔥 ISSO CENTRALIZA */
 }
 
-/*  */
+/* evita que o estilo antigo do card simples atrapalhe o Sobre */
 .page-view[data-page="sobre"] .simple-page-card {
   display: none;
 }
 
 /* =========================
-   
+   PAGE TRANSITION - VINTEUM STYLE
 ========================= */
 
 .page-container {
-  position: fixed;
-  inset: 0;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   z-index: 5;
 }
 
 .page-view {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition:
-    opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0.42s step-end;
-  will-change: opacity, transform;
+  display: none;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .page-view.active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-  transition:
-    opacity 0.58s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.58s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear;
+  display: block;
 }
 
-.page-view.exiting {
-  opacity: 0;
-  visibility: visible;
-  pointer-events: none;
-  transform: translateY(-10px);
-  transition:
-    opacity 0.24s ease,
-    transform 0.24s ease,
-    visibility 0.24s step-end;
-}
-
+.page-view.exiting,
 .page-view.entering {
-  opacity: 0;
-  visibility: visible;
-  pointer-events: none;
-  transform: translateY(10px);
+  display: none;
 }
 
 /* sombra/escurecida leve entre páginas */
@@ -1977,7 +1952,7 @@ body::after {
   transition-delay: 0.40s;
 }
 
-/* */
+/* animação do card principal (HOME) */
 
 
 @keyframes cardFadeIn {
@@ -1991,7 +1966,7 @@ body::after {
   }
 }
 
-/*  */
+/* imagem abaixo do texto (estilo vinteum) */
 
 .about-image-wrapper {
   width: 100%;
@@ -2013,7 +1988,7 @@ body::after {
   opacity: 0.95;
 
 
-  /*  */
+  /* estilo visual bonito */
   opacity: 0.9;
   filter: brightness(0.9) contrast(1.05);
 
@@ -2025,7 +2000,7 @@ body::after {
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-/*  */
+/* leve efeito ao passar o mouse */
 .about-image:hover {
   transform: scale(1.02);
   opacity: 1;
@@ -2096,7 +2071,7 @@ body::after {
   transform: none !important;
 }
 
-/*  */
+/* 🔥 REMOVE LINKS DO CONTEXTO 3D DO CARD */
 
 .links-row {
   transform: translateX(-50%) translateZ(0) !important;
@@ -2112,9 +2087,1254 @@ body::after {
   backface-visibility: visible !important;
 }
 
-/*  */
+/* garante que NADA herde rotação do card */
 .social-btn,
 .more-link,
 .links-divider {
   transform: none !important;
+}
+
+/* =========================
+   LAZER / MÚSICA
+========================= */
+
+.lazer-layout {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: min(1180px, calc(100vw - 72px));
+  margin: 132px auto 48px;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+}
+
+.lazer-header {
+  margin-bottom: 24px;
+}
+
+.lazer-title {
+  margin: 0;
+  font-family: Inter, "Inter Fallback";
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 48px;
+  color: lab(90.7505 1.8031 7.45089);
+}
+
+.lazer-subtitle {
+  margin-top: 10px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 16px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.music-shell {
+  border-radius: 26px;
+  background: #170F0A;
+  border: 1px solid rgba(255,255,255,0.045);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.015),
+    0 18px 50px rgba(0,0,0,0.42);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px;
+  overflow: visible;
+}
+
+.music-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.music-tab {
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  background: #150E0A;
+  color: #a89787;
+  font-family: Inter, "Inter Fallback";
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.music-tab.active {
+  background: #B5825F;
+  color: #120904;
+  font-weight: 600;
+}
+
+.music-tab:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.music-section {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.music-loading {
+  height: 420px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #bcae9f;
+  font-family: Inter, "Inter Fallback";
+}
+
+.music-loading-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #c68f67;
+  box-shadow: 0 0 18px rgba(198, 143, 103, 0.35);
+  animation: musicPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   LAZER / MÚSICA — VISUAL REFINADO
+========================= */
+
+.music-dashboard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.music-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.music-header-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.music-header-name-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-header-name {
+  font-family: Inter, "Inter Fallback";
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 36px;
+  color: lab(90.7505 1.8031 7.45089);
+}
+
+.music-header-user {
+  margin-top: 0px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 14px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.pro-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: #36261B;
+  color: lab(59.0642 17.2913 27.0713);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+
+  transform: translateY(-4px);
+}
+
+.music-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.music-header-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: lab(53.5643 4.57534 10.6701);
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.music-header-date-icon {
+  width: 12px;
+  height: 12px;
+  color: lab(53.5643 4.57534 10.6701);
+  flex-shrink: 1;
+}
+
+.music-header-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: lab(59.0642 17.2913 27.0713);
+  text-decoration: none;
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.music-header-link:hover {
+  color: #dfab80;
+}
+
+.music-header-link-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.music-main-stats {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 14px;
+}
+
+.stat-box {
+  width: 162.672px;
+  height: 102px;
+  padding: 16px 12px 12px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  background: #22160F; 
+  
+  border: 1px solid rgba(191, 129, 84, 0.18);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.015),
+    0 10px 28px rgba(0,0,0,0.18);
+}
+
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  color: lab(59.0642 17.2913 27.0713);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.stat-value {
+  font-family: Inter, "Inter Fallback";
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 28px;
+  color: lab(90.7505 1.8031 7.45089);
+}
+
+.stat-label {
+  margin-top: 0px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.music-main-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 22px;
+}
+
+.music-left,
+.music-right {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.section-title {
+  margin: 0 0 2px 0;
+  font-family: Inter, "Inter Fallback";
+  font-size: 13px;
+  font-weight: 700;
+  color: #a08a74;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.detail-box {
+  padding: 20px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.015);
+}
+
+.detail-value {
+  font-family: Inter, "Inter Fallback";
+  font-size: 19px;
+  font-weight: 700;
+  color: #f3ebe4;
+}
+
+.detail-label {
+  margin-top: 6px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 13px;
+  color: #a89684;
+}
+
+.insights-box {
+  padding: 20px 18px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  color: #d7c7b9;
+  line-height: 1.75;
+}
+
+.insights-box strong {
+  color: #f3ebe4;
+}
+
+.fav-card {
+  padding: 22px;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 90% 50%, #17100b 0%, #21160f 16%, #291C13 40%, transparent 74%),
+    radial-gradient(circle at 16% 16%, #170F09, transparent 24%),
+    linear-gradient(90deg, #291C13 0%, #291C13 42%, #291C13 66%, #20170E 100%);
+
+  border: 1px solid rgba(198,143,103,0.32);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.02),
+    0 18px 40px rgba(0,0,0,0.22);
+}
+
+.fav-title {
+  margin-bottom: 14px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  font-weight: 700;
+  color: #d1a27a;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.fav-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fav-img {
+  width: 92px;
+  height: 92px;
+  border-radius: 20px;
+  object-fit: cover;
+  background: #1a120c;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 10px 26px rgba(0,0,0,0.22);
+}
+
+.fav-name {
+  font-family: Inter, "Inter Fallback";
+  font-size: 24px;
+  font-weight: 700;
+  color: #f3ebe4;
+}
+
+.fav-plays {
+  margin-top: 8px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 14px;
+  color: #d1a27a;
+}
+
+.other-artists {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.artist-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.artist-row:hover {
+  background: rgba(255,255,255,0.035);
+  border-color: rgba(198,143,103,0.2);
+  transform: translateY(-1px);
+}
+
+.artist-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #1a120c;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+.artist-name {
+  font-family: Inter, "Inter Fallback";
+  font-size: 14px;
+  font-weight: 600;
+  color: #f3ebe4;
+}
+
+.artist-plays {
+  margin-top: 3px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  color: #a89684;
+}
+
+@media (max-width: 900px) {
+  .music-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-main-stats {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================
+   FOTO DO LAST.FM COM 2 LISTRAS
+========================================= */
+
+.music-header-avatar-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  max-width: 100%;
+  flex-shrink: 1;
+  border-radius: 24px;
+  background: #271A12; /* listra externa */
+  box-sizing: border-box;
+}
+
+.music-header-avatar-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 20px;
+  background: #493225; /* listra interna */
+  z-index: 1;
+}
+
+.music-header-avatar {
+  position: absolute;
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  z-index: 2;
+  border: none;
+}
+
+.music-divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.02) 12%,
+    rgba(191,129,84,0.16) 30%,
+    rgba(191,129,84,0.28) 50%,
+    rgba(191,129,84,0.16) 70%,
+    rgba(255,255,255,0.02) 88%,
+    rgba(255,255,255,0) 100%
+  );
+}
+
+.music-divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 20px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(120, 76, 45, 0.05) 18%,
+    rgba(191, 129, 84, 0.18) 50%,
+    rgba(120, 76, 45, 0.05) 82%,
+    transparent 100%
+  );
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.section-title-icon {
+  width: 14px;
+  height: 14px;
+  color: lab(53.5643 4.57534 10.6701);
+  flex-shrink: 0;
+}
+
+.detail-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 18px 18px 16px;
+  background: #120C07;
+}
+
+.detail-icon {
+  width: 20px;
+  height: 20px;
+  color: lab(59.0642 17.2913 27.0713);
+  margin-bottom: 8px;
+  flex-shrink: 1;
+}
+
+.detail-value {
+  font-family: Inter, "Inter Fallback";
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 32px;
+  color: lab(90.7505 1.8031 7.45089);
+}
+
+.detail-label {
+  margin-top: 0px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  line-height: 16px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.insights-box {
+  padding: 20px 20px 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.015);
+  color: #d7c7b9;
+}
+
+.insights-top {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.insight-stat-label {
+  font-family: Inter, "Inter Fallback";
+  font-size: 12px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.insight-stat-value {
+  margin-top: 0px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 28px;
+  color: lab(90.7505 1.8031 7.45089);
+}
+
+.insight-stat-sub {
+  margin-top: 0px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 10px;
+  color: oklab(0.6 0.0126719 0.0272017 / 0.7);
+}
+
+.insights-dist-title {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.insight-bar-row + .insight-bar-row {
+  margin-top: 10px;
+}
+
+.insight-bar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 13px;
+  color: #a89684;
+}
+
+.insight-bar-head strong {
+  color: #f3ebe4;
+  font-weight: 700;
+}
+
+.insight-bar-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.05);
+  overflow: hidden;
+}
+
+.insight-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #cf9a70  0%,
+    #865c42 55%,
+    #6b4634 100%
+  );
+}
+
+.insights-footer {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.insights-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Inter, "Inter Fallback";
+  font-size: 13px;
+  color: #a89684;
+}
+
+.insights-date-icon {
+  width: 14px;
+  height: 14px;
+  color: #a89684;
+  flex-shrink: 0;
+}
+
+.insights-days {
+  font-family: Inter, "Inter Fallback";
+  font-size: 13px;
+  font-weight: 700;
+  color: #d1a27a;
+}
+
+/* ===== LAZER LIMPO E FINAL ===== */
+
+/* navbar */
+.top-nav {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  will-change: transform, opacity;
+}
+
+.top-nav.nav-pre-enter {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-80px);
+}
+
+.top-nav.nav-entered {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* páginas */
+.page-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 5;
+}
+
+.page-view {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page-view.active {
+  display: block;
+}
+
+.page-view.exiting,
+.page-view.entering {
+  display: none;
+}
+
+/* lazer */
+.page-view[data-page="lazer"],
+.page-view[data-page="lazer"].active {
+  position: relative;
+  width: 100%;
+  min-height: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.lazer-layout {
+  position: relative;
+  width: min(1180px, calc(100vw - 72px));
+  margin: 132px auto 48px;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+}
+
+.music-shell {
+  overflow: visible;
+}
+
+.music-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 560px;
+  gap: 22px;
+  align-items: start;
+}
+
+.music-left {
+  min-width: 0;
+}
+
+.music-right {
+  grid-column: 2;
+  grid-row: 1;
+  width: 560px;
+  min-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-self: start;
+}
+
+@media (max-width: 1200px) {
+  .music-main-grid {
+    grid-template-columns: minmax(0, 1fr) 500px;
+  }
+
+  .music-right {
+    width: 500px;
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 900px) {
+  .music-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-right {
+    grid-column: auto;
+    grid-row: auto;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-main-stats {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ===== ARTISTAS — VISUAL REFINADO ===== */
+
+.music-right {
+  gap: 16px !important;
+}
+
+.fav-card {
+  padding: 18px 22px 16px;
+  border-radius: 22px;
+  background: (
+    90deg,
+    rgba(73, 41, 21, 0.88) 0%,
+    rgba(47, 21, 10, 0.96) 55%,
+    rgba(55, 24, 11, 0.92) 100%
+  );
+  border: 1px solid rgba(198, 143, 103, 0.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 12px 34px rgba(0,0,0,0.22);
+}
+
+.fav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.fav-top-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fav-star {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: #c89268;
+  color: #140b06;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.fav-star-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.fav-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fav-title {
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #c9aa8e;
+}
+
+.fav-subtitle {
+  font-size: 12px;
+  color: #8d7564;
+}
+
+.fav-rank {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(205, 153, 111, 0.65);
+  background: rgba(174, 117, 73, 0.16);
+  color: #d8a173;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  animation: favRankPulse 2s ease-in-out infinite;
+}
+
+@keyframes favRankPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(216, 161, 115, 0);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(216, 161, 115, 0.18);
+  }
+}
+
+.fav-main {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 106px minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.fav-cover-wrap {
+  position: relative;
+  width: 106px;
+  height: 106px;
+}
+
+.fav-img {
+  width: 106px;
+  height: 106px;
+  border-radius: 22px;
+  object-fit: cover;
+  background: #1a120c;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 10px 26px rgba(0,0,0,0.22);
+}
+
+.fav-crown {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: #c89268;
+  color: #120904;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.24);
+  transform-origin: center center;
+  line-height: 0;
+  flex-shrink: 0;
+  animation: favCrownFloatSoft 2.8s ease-in-out infinite;
+}
+
+.fav-crown-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+}
+
+@keyframes favCrownFloatSoft {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  18% {
+    transform: translateY(-1px) rotate(3deg) scale(1.025);
+  }
+  36% {
+    transform: translateY(-2px) rotate(-3deg) scale(1.04);
+  }
+  54% {
+    transform: translateY(-1px) rotate(2deg) scale(1.02);
+  }
+  68% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+.fav-info {
+  min-width: 0;
+}
+
+.fav-name {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 30px;
+  color: lab(90.7505 1.8031 7.45089);
+  margin-bottom: 8px;
+}
+
+.fav-stats {
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.fav-stat-label {
+  font-size: 12px;
+  color: lab(53.5643 4.57534 10.6701);
+  margin-bottom: 4px;
+}
+
+.fav-stat-value {
+  margin-top: 0px;
+  font-size: 18px;
+  font-weight: 700;
+  color: lab(59.0642 17.2913 27.0713);
+}
+
+.fav-stat-play-icon {
+  color: lab(59.0642 17.2913 27.0713);
+  margin-right: 0px;
+}
+
+.fav-divider {
+  margin-top: 14px;
+  height: 1px;
+  background: #352D29;
+  
+}
+
+.fav-footer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.fav-footer-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #a58a76;
+  font-size: 13px;
+}
+
+.fav-footer-icon {
+  width: 16px;
+  height: 16px;
+  color: lab(59.0642 17.2913 27.0713);
+  flex-shrink: 1;
+}
+
+.fav-footer-link {
+  width: 16px;
+  height: 16px;
+  color: lab(59.0642 17.2913 27.0713);
+  display: block;
+  align-items: normal;
+  justify-content: normal;
+  text-decoration: none;
+}
+
+.fav-footer-link-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.other-artists {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.other-artists-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.other-artists-title-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.other-artists-icon {
+  width: 16px;
+  height: 16px;
+  color: lab(53.5643 4.57534 10.6701);
+  flex-shrink: 1;
+}
+
+.other-artists-title {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.other-artists-range {
+  font-size: 12px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+.artist-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 26px 52px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 0px;
+  padding: 12px 12px 12px 12px;
+  border-radius: 18px;
+  background: #130D08;
+  border: 1px solid rgba(255,255,255,0.03);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.artist-row:hover {
+  background: rgba(255,255,255,0.035);
+  border-color: rgba(198,143,103,0.2);
+  transform: translateY(-1px);
+}
+
+.artist-rank {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: lab(12.9251 4.15897 6.54917);
+  color: lab(90.7505 1.8031 7.45089);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.artist-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: lab(1.55178% .640653 1.00339);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+.artist-main {
+  min-width: 0;
+}
+
+.artist-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: lab(90.7505 1.8031 7.45089);
+  line-height: 20px;
+}
+
+.artist-plays {
+  margin-top: 0px;
+  font-size: 12px;
+  color: lab(53.5643 4.57534 10.6701);
+}
+
+@media (max-width: 1200px) {
+  .fav-main {
+    grid-template-columns: 92px minmax(0, 1fr);
+  }
+
+  .fav-cover-wrap,
+  .fav-img {
+    width: 92px;
+    height: 92px;
+  }
+
+  .fav-name {
+    font-size: 22px;
+  }
+}
+
+.insights-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: #a98b75;
+}
+
+.insights-header-icon {
+  width: 20px;
+  height: 20px;
+  color: lab(59.0642 17.2913 27.0713);
+  flex-shrink: 1;
+}
+
+.fav-rank {
+  position: absolute;
+  top: auto;
+  right: 14px;
+  width: 36px;
+  height: 38px;
+  border-radius: 999px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 🎨 FUNDO */
+  background: #523929;
+
+  /* 🎨 BORDA */
+  border: 1px solid oklab(0.650002 0.0458763 0.065544 / 0.6);
+
+  /* 🎨 TEXTO */
+  color: lab(59.0642 17.2913 27.0713);
+
+  font-family: 'Inter', "Inter Fallback";
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.6px;
 }
