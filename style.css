@@ -3034,11 +3034,15 @@ body::after {
 }
 
 .fav-img {
-  width: 106px;
-  height: 106px;
+  width: 96px;
+  height: 96px;
   border-radius: 22px;
   object-fit: cover;
-  background: #1a120c;
+  position: relative;
+  z-index: 0;
+
+  border: 4px solid #5C412F;
+
   box-shadow:
     0 0 0 1px rgba(255,255,255,0.04),
     0 10px 26px rgba(0,0,0,0.22);
@@ -3046,48 +3050,81 @@ body::after {
 
 .fav-crown {
   position: absolute;
-  right: -8px;
-  bottom: -8px;
-  width: 46px;
-  height: 46px;
+  right: 0px;
+  bottom: 0px;
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
-  background: #c89268;
+  background: lab(59.0642 17.2913 27.0713);
   color: #120904;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 8px 22px rgba(0,0,0,0.24);
   transform-origin: center center;
-  line-height: 0;
-  flex-shrink: 0;
-  animation: favCrownFloatSoft 2.8s ease-in-out infinite;
+  line-height: 24px;
+  flex-shrink: 1;
+  z-index: 5;
+
+  animation: crownPulse 3s ease-in-out infinite,
+    crownTilt 3s ease-in-out infinite;
+
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .fav-crown-icon {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   display: block;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 
-@keyframes favCrownFloatSoft {
+@keyframes crownPulse {
   0% {
-    transform: translateY(0) rotate(0deg) scale(1);
+    transform: scale(1);
   }
-  18% {
-    transform: translateY(-1px) rotate(3deg) scale(1.025);
+
+  30% {
+    transform: scale(1.08);
   }
-  36% {
-    transform: translateY(-2px) rotate(-3deg) scale(1.04);
+
+  55% {
+    transform: scale(1.05);
   }
-  54% {
-    transform: translateY(-1px) rotate(2deg) scale(1.02);
+
+  75% {
+    transform: scale(1.02);
   }
-  68% {
-    transform: translateY(0) rotate(0deg) scale(1);
-  }
+
   100% {
-    transform: translateY(0) rotate(0deg) scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes crownTilt {
+  0% {
+    rotate: 0deg;
+  }
+
+  25% {
+    rotate: 7deg;
+  }
+
+  50% {
+    rotate: -7deg;
+  }
+
+  65% {
+    rotate: 0deg;
+  }
+
+  80% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 0deg;
   }
 }
 
