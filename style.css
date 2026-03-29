@@ -1550,11 +1550,11 @@ body::after {
 }
 
 .top-nav {
-  position: fixed;
+  position: sticky;
   top: 18px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 60;
+  z-index: 50;
 
   display: inline-flex;
   align-items: center;
@@ -2100,11 +2100,12 @@ body::after {
 
 .lazer-layout {
   position: relative;
+  padding-top: 30px;
   top: auto;
   left: auto;
   transform: none;
   width: min(1180px, calc(100vw - 72px));
-  margin: 132px auto 48px;
+  margin: 100px auto 48px;
   z-index: 12;
   display: flex;
   flex-direction: column;
@@ -2802,11 +2803,11 @@ body::after {
 
 /* navbar */
 .top-nav {
-  position: fixed;
-  top: 18px;
+  position: sticky;
+  top: 20;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 60;
+  z-index: 50;
   will-change: transform, opacity;
 }
 
@@ -2856,7 +2857,7 @@ body::after {
 .lazer-layout {
   position: relative;
   width: min(1180px, calc(100vw - 72px));
-  margin: 132px auto 48px;
+  margin: 50px auto 48px;
   z-index: 12;
   display: flex;
   flex-direction: column;
