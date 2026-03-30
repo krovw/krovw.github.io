@@ -967,22 +967,23 @@ const favPercent = totalPlaycount > 0
             <div class="other-artists-range">#2 - #5</div>
           </div>
 
-          ${otherArtists
-  .map(
-    (artist, i) => `
+          ${otherArtists.map((artist, index) => `
   <a class="artist-row" href="${artist.url || "#"}" target="_blank" rel="noopener noreferrer">
-    <div class="artist-rank">${i + 2}</div>
+  <div class="artist-cover-wrap">
+    <img
+      src="${otherImages[index] || "assets/fallback-artist.png"}"
+      class="artist-avatar"
+      alt="${artist.name}"
+    >
+    <div class="artist-rank">${index + 2}</div>
+  </div>
 
-    <img src="${otherImages[i]}" class="artist-avatar" alt="${artist.name}">
-
-    <div class="artist-main">
-      <div class="artist-name">${artist.name}</div>
-      <div class="artist-plays">${formatNumber(artist.playcount)} reproduções</div>
-    </div>
-  </a>
-`
-  )
-  .join("")}
+  <div class="artist-main">
+    <div class="artist-name">${artist.name}</div>
+    <div class="artist-plays">${formatNumber(artist.playcount)} reproduções</div>
+  </div>
+</a>
+`).join("")}
         </div>
 
       </div>
