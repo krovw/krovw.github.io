@@ -222,16 +222,33 @@
       <p class="lazer-subtitle">O que eu ando curtindo</p>
     </div>
 
-    <div class="music-shell anim-in anim-delay-2">
-      <div class="music-topbar">
-        <button class="music-tab active" type="button">Música</button>
-        <button class="music-tab" type="button" disabled>Filmes &amp; Séries</button>
-      </div>
+    <!-- HEADER DAS ABAS - FORA DO CARD -->
+    <div class="music-topbar top-tabs anim-in anim-delay-2">
+      <button class="music-tab active" type="button" data-tab="music">
+        Música
+      </button>
 
-      <div id="musicSection" class="music-section">
+      <button class="music-tab" type="button" data-tab="films">
+        Filmes &amp; Séries
+      </button>
+    </div>
+
+    <!-- CARD PRINCIPAL -->
+    <div class="music-shell anim-in anim-delay-2">
+      <!-- ABA MÚSICA -->
+      <div id="musicSection" class="tab-panel is-active">
         <div class="music-loading">
           <div class="music-loading-dot"></div>
           <p>Carregando dados do Last.fm...</p>
+        </div>
+      </div>
+
+      <!-- ABA FILMES -->
+      <div id="filmsSection" class="tab-panel">
+        <div class="films-dashboard">
+          <div class="films-placeholder">
+            <p>Soon</p>
+          </div>
         </div>
       </div>
     </div>
