@@ -25,9 +25,12 @@ const DISCORD_USER_ID = "1184191270248251512";
 
 let lanyardSocket = null;
 let lanyardHeartbeat = null;
+let lanyardHasSpotify = false;
 
 function applyPresenceData(data) {
   if (!data) return;
+
+  lanyardHasSpotify = !!data?.spotify;
 
   updateDiscordStatus(data.discord_status);
   updateSpotifyBox(data);
@@ -96,6 +99,34 @@ async function getDiscordPresence() {
     applyPresenceData(json.data);
   } catch (err) {
     console.error("Erro Lanyard:", err);
+  }
+}
+
+async function syncBackendNowPlaying() {
+  if (lanyardHasSpotify) return;
+
+  try {
+    const res = await fetch("http://localhost:3000/api/now-playing");
+    if (!res.ok) return;
+
+    const backendData = await res.json();
+
+    if (!backendData || !backendData.track) return;
+
+    const trackId = backendData.spotifyUrl
+      ? backendData.spotifyUrl.split("/track/")[1]?.split("?")[0] || null
+      : null;
+
+    updateSpotifyBox({
+      spotify: {
+        song: backendData.track,
+        artist: backendData.artist,
+        album_art_url: backendData.albumArt,
+        track_id: trackId,
+      },
+    });
+  } catch (err) {
+    console.error("Erro ao buscar backend now-playing:", err);
   }
 }
 
@@ -320,6 +351,8 @@ function updateSpotifyBox(data) {
 /* LOOP */
 getDiscordPresence();
 connectLanyardSocket();
+syncBackendNowPlaying();
+setInterval(syncBackendNowPlaying, 10000);
 
 /* TILT 3D */
 if (card) {
