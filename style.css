@@ -2503,48 +2503,6 @@ body::after {
   gap: 10px;
 }
 
-.artist-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 11px 12px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.03);
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.artist-row:hover {
-  background: rgba(255,255,255,0.035);
-  border-color: rgba(198,143,103,0.2);
-  transform: translateY(-1px);
-}
-
-.artist-avatar {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  object-fit: cover;
-  background: #1a120c;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.03);
-}
-
-.artist-name {
-  font-family: Inter, "Inter Fallback";
-  font-size: 14px;
-  font-weight: 600;
-  color: #f3ebe4;
-}
-
-.artist-plays {
-  margin-top: 3px;
-  font-family: Inter, "Inter Fallback";
-  font-size: 12px;
-  color: #a89684;
-}
 
 @media (max-width: 900px) {
   .music-main-grid {
@@ -3254,11 +3212,10 @@ body::after {
 .artist-row {
   position: relative;
   display: grid;
-  grid-template-columns: 26px 52px minmax(0, 1fr);
+  grid-template-columns: 52px minmax(0, 1fr);
   align-items: center;
   gap: 12px;
-  min-height: 0px;
-  padding: 12px 12px 12px 12px;
+  padding: 12px;
   border-radius: 18px;
   background: #130D08;
   border: 1px solid rgba(255,255,255,0.03);
@@ -3275,9 +3232,19 @@ body::after {
   transform: translateY(-1px);
 }
 
+.artist-cover-wrap {
+  position: relative;
+  width: 52px;
+  height: 52px;
+}
+
 .artist-rank {
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
   border-radius: 999px;
   background: lab(12.9251 4.15897 6.54917);
   color: lab(90.7505 1.8031 7.45089);
@@ -3286,13 +3253,16 @@ body::after {
   justify-content: center;
   font-size: 12px;
   font-weight: 900;
+  z-index: 2;
+  box-shadow: 0 0 0 2px #130D08;
 }
 
 .artist-avatar {
-  width: 44px;
-  height: 44px;
+  width: 52px;
+  height: 52px;
   border-radius: 14px;
   object-fit: cover;
+  display: block;
   background: lab(1.55178% .640653 1.00339);
   box-shadow: 0 0 0 1px rgba(255,255,255,0.03);
 }
