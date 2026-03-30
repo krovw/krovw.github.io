@@ -1156,3 +1156,30 @@ window.addEventListener("load", () => {
 
   animateTopNav();
 });
+
+const lazerTabs = document.querySelectorAll(".top-tabs .music-tab");
+const musicSection = document.getElementById("musicSection");
+const filmsSection = document.getElementById("filmsSection");
+
+function switchLazerTab(tabName) {
+  lazerTabs.forEach((tab) => {
+    const isActive = tab.dataset.tab === tabName;
+    tab.classList.toggle("active", isActive);
+  });
+
+  if (musicSection) {
+    musicSection.classList.toggle("is-active", tabName === "music");
+  }
+
+  if (filmsSection) {
+    filmsSection.classList.toggle("is-active", tabName === "films");
+  }
+}
+
+lazerTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    switchLazerTab(tab.dataset.tab);
+  });
+});
+
+switchLazerTab("music");
